@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>@yield('title', 'لوحة التحكم') — Logic Arrow</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('admin/favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
 @auth
     <header class="topbar">
         <div class="container">
-            <a href="{{ route('admin.inquiries.index') }}"><img src="{{ asset('logo.png') }}" alt="Logic Arrow"></a>
+            <a href="{{ route('admin.inquiries.index') }}"><img src="{{ asset('admin/logo.png') }}" alt="Logic Arrow"></a>
             <div class="user">
                 <span>{{ auth()->user()->name }}</span>
                 <form method="POST" action="{{ route('admin.logout') }}">

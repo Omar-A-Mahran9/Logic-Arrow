@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/admin');
 
-Route::middleware('guest')->group(function () {
+Route::middleware('guest')->prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'create'])->name('login');
     Route::post('/login', [AuthController::class, 'store'])->middleware('throttle:5,1');
 });

@@ -56,7 +56,7 @@ class InquiryTest extends TestCase
 
     public function test_dashboard_requires_login(): void
     {
-        $this->get('/admin/inquiries')->assertRedirect('/login');
+        $this->get('/admin/inquiries')->assertRedirect('/admin/login');
     }
 
     public function test_admin_can_filter_by_service_and_open_an_inquiry(): void

@@ -18,7 +18,7 @@
 @section('content')
     <form class="card login" method="POST" action="{{ route('login') }}">
         @csrf
-        <img src="{{ asset('logo.png') }}" alt="Logic Arrow">
+        <img src="{{ asset('admin/logo.png') }}" alt="Logic Arrow">
         <h1>تسجيل الدخول إلى لوحة التحكم</h1>
 
         <div class="field">
