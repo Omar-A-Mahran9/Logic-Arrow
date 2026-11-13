@@ -9,27 +9,9 @@ const open = ref(false)
 const anchors = ['#solutions', '#how-we-work', '#industries', '#about']
 const active = ref('#solutions')
 
-// Hide while scrolling down past the hero, reveal on any scroll up.
-const hidden = ref(false)
-let lastY = 0
-let ticking = false
-function onScroll() {
-  if (ticking) return
-  ticking = true
-  requestAnimationFrame(() => {
-    const y = window.scrollY
-    if (Math.abs(y - lastY) > 6) {
-      hidden.value = y > lastY && y > 160 && !open.value
-      lastY = y
-    }
-    ticking = false
-  })
-}
-
 // Highlight the link of the section currently in view (Figma: active link is bold blue).
 let io
 onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
   if (typeof IntersectionObserver === 'undefined') return
   io = new IntersectionObserver(
     (entries) => {
@@ -43,13 +25,12 @@ onMounted(() => {
   }
 })
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
   io?.disconnect()
 })
 </script>
 
 <template>
-  <header class="nav" :class="{ 'nav--hidden': hidden }">
+  <header class="nav">
     <div class="container nav__inner">
       <a href="#top" class="nav__logo">
         <img :src="logo" :alt="t.alt.logo" width="200" height="51" />
@@ -96,11 +77,7 @@ onBeforeUnmount(() => {
   background: var(--la-surface-raised);
   border-bottom: 1px solid var(--la-line);
   box-shadow: var(--shadow-card);
-  transition: transform 0.45s var(--ease-out);
   animation: nav-in 0.8s var(--ease-out) backwards;
-}
-.nav--hidden {
-  transform: translateY(-100%);
 }
 @keyframes nav-in {
   from {
